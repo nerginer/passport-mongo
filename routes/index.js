@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
+
 var isAuthenticated = function (req, res, next) {
 	// if user is authenticated in the session, call the next() to call the next request handler 
 	// Passport adds this method to request object. A middleware is allowed to add properties to
@@ -25,6 +26,23 @@ module.exports = function(passport){
 		failureRedirect: '/',
 		failureFlash : true  
 	}));
+	
+		/* Handle Upload File POST */
+	router.get('/upload', isAuthenticated,function(req,res){
+        
+         	res.render('upload',{message: req.flash('message')});
+        
+    });
+	
+	router.post('/upload', isAuthenticated,function(req,res){
+        
+         	console.log(req.files);
+            res.end("File uploaded.");
+        
+    });
+
+	
+	
 
 	/* GET Registration Page */
 	router.get('/signup', function(req, res){
