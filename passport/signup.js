@@ -32,8 +32,9 @@ module.exports = function(passport){
                         newUser.email = req.param('email');
                         newUser.firstName = req.param('firstName');
                         newUser.lastName = req.param('lastName');
+                        newUser.files=     [{id:"123"},{id:"2213"}];
 
-                        // save the user
+                        // save the user 
                         newUser.save(function(err) {
                             if (err){
                                 console.log('Error in Saving user: '+err);  

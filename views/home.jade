@@ -12,4 +12,7 @@ block content
 								li Email    ---> #{user.email}
 								li First Name ---> #{user.firstName} 
 								li Last Name ---> #{user.lastName}
+								li Files: --->
+								each file in user.files
+									li id :#{file.id}
 						a(href='/signout', class='text-center new-account') Sign Out
