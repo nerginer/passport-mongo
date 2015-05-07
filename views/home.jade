@@ -16,3 +16,6 @@ block content
 								each file in user.files
 									li id :#{file.id}
 						a(href='/signout', class='text-center new-account') Sign Out
+				#message
+					if message
+						h1.text-center.error-message #{message}

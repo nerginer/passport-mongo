@@ -37,8 +37,10 @@ module.exports = function(passport){
 	router.post('/upload', isAuthenticated,function(req,res){
         
          	console.log(req.files);
-            res.end("File uploaded.");
-        
+         
+           	 res.send("File uploaded. <a href='/home'>Home</a>");
+            
+       
     });
 
 	
