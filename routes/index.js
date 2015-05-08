@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
+var MyObj = require('../models/myObj');
+
+
 
 var isAuthenticated = function (req, res, next) {
 	// if user is authenticated in the session, call the next() to call the next request handler 
@@ -37,8 +40,18 @@ module.exports = function(passport){
 	router.post('/upload', isAuthenticated,function(req,res){
         
          	console.log(req.files);
+         	var tempObj = new MyObj({
+                name: req.files.userfile.name,
+                filePath: '/uploads',
+                size: req.files.userfile.size 
+             });
+             
+		    tempObj.save(function(err) {
+				  if (err) throw err;
+				  console.log('File saved successfully!');
+		    });
          
-           	 res.send("File uploaded. <a href='/home'>Home</a>");
+           	res.send("File uploaded. <a href='/home'>Home</a>");
             
        
     });
